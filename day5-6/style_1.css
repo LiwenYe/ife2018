@@ -1,0 +1,24 @@
+
+main{
+    border:1px solid #e2e2e2;
+    padding: 0 10px;
+    width: 800px;
+    margin: 0 auto;
+}
+main p{
+    font-size: 17px;
+}
+main p span+span{
+    margin-left: 50px;
+}
+
+main a{
+    color: blue;
+}
+main h1{
+    font-size: 35px;
+}
+.blo{
+    display: block;
+    margin-left: 0;
+}

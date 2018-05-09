@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    width: 1000px;
+    margin: 10px auto;
+}
+main header{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #9c9c9c;
+    padding: 20px;
+}
+main header h1{
+    font-size: 18px;
+    color: white;
+}
+.content{
+    width: 100%;
+}
+.content h2,p{
+    font-size: 15px;
+}
+main p span+span{
+    margin-left: 50px;
+}
+main .content section{
+    border: 1px solid #f0f0f0;
+    overflow: auto;
+}
+main .content section aside{
+    background: #d4d4d4;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    float: left;
+}
+main .content section aside h2{
+    margin-top: calc(50% - 8px);
+}
+main .content section article{
+    padding: 10px;
+    float: left;
+}
+.blo{
+    margin-left: 0;
+}
