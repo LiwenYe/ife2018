@@ -1,0 +1,27 @@
+body{
+    margin:0;
+    padding: 0;
+}
+main{
+    width: 100%;
+    /*3.flex*/
+    /*display:flex;*/
+}
+.left{
+    width: 30%;
+    height:300px;
+    background: red;
+    /*float*/
+    /*float: left;*/
+}
+.right{
+    width: 70%;
+    height: 300px;
+    background-color: blue;
+    /*1.float
+    float: left;*/
+    /*2.position*/
+    position: absolute;
+    top: 0;
+    right: 0;
+}

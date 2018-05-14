@@ -1,0 +1,30 @@
+body{
+    margin:0;
+    padding: 0;
+}
+main{
+    width: 100%;
+    /*3.flex*/
+    display: flex;
+}
+.left{
+    height: 300px;
+    background: red;
+    /*1.float
+    float: left;
+    width: calc(100% - 300px);*/
+    /*2.position*/
+    width: calc(100% - 300px);
+    /*3..flex;
+    width: calc(100% - 300px);*/
+}
+.right{
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+    /*1.float
+    float: right;*/
+    /*2.position*/
+    position: absolute;
+    right: 0;
+}
