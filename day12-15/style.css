@@ -1,0 +1,472 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*设置HTML，body的height均为100%，再设置nav（左边第一列）高度为100%完成最左侧一列自适应浏览器高度要求*/
+html{
+    height: 100%;
+}
+html body{
+    height: 100%;
+    /*display: flex;*/
+}
+nav{
+    height: 100%;
+    width: 100px;
+    background: rgb(29,37,49);
+    box-sizing: border-box;
+    padding: 20px;
+
+    float: left;
+}
+nav .func img{
+    display: block;
+}
+nav .func img+img{
+    margin-top: 20px;
+}
+/*左下方两个按钮相对浏览器左下角固定位置*/
+nav .set{
+    position: absolute;
+    bottom: 20px;
+}
+nav .set img+img{
+    margin-left: 16px;
+}
+
+.setting{
+    width: 250px;
+    height: 100%;
+    background: rgb(34,44,60);
+
+    /*设置为border-box，加入padding时宽度固定*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 30px;
+
+    float: left;
+}
+.setting ul li h2{
+    font-size: 12px;
+    line-height: 40px;
+    color: rgb(91,103,121);
+}
+.setting ul li p{
+    font-size: 12px;
+    line-height: 30px;
+    color: rgb(183,192,205);
+}
+.setting ul li .msgNum{
+    width: 32px;
+    height: 24px;
+    background: url("photo/bluebg.png");
+    text-align: center;
+}
+.setting ul li .msgNum span{
+    font-size: 12px;
+    line-height: 24px;
+    color: white;
+}
+.setting .menu ul li,
+.setting .dash ul li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.setting .menu{
+    padding-bottom: 25px;
+}
+.setting .dash{
+    padding-top: 25px;
+}
+.setting .products{
+    padding: 25px 0;
+    border: 1px solid rgb(42,53,71);
+    border-left-width: 0;
+    border-right-width: 0;
+}
+.setting .products ul li{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.setting .products ul li.smallTitle{
+    justify-content: space-between;
+}
+.setting .products ul li p{
+    padding-left: 13px;
+}
+/*最下面的Monthly Goals部分的内容相对浏览器下边固定位置*/
+.setting .goal{
+    position: absolute;
+    bottom: 22px;
+}
+.setting .goal .number{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: white;
+}
+.setting .goal  .progress{
+    width: 191px;
+    height: 5px;
+    background: rgb(45,56,72);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 12px;
+
+}
+.setting .goal  .progress .finish{
+    background: rgb(148,128,228);
+    height: 100%;
+    width: 21.5%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;'
+}
+.message{
+    margin-left: 350px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+.message h1{
+    display: inline-block;
+    font-size: 24px;
+    font-weight: normal;
+}
+.message .myInfo{
+    width: 232px;
+    display: flex;
+    align-items: center;
+}
+.message .myInfo .pho{
+    position: relative;
+    width: 50px;
+}
+.message .myInfo .pho .choose{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: white;
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.message .myInfo .info{
+    font-size: 14px;
+    color: rgb(181,181,181);
+    margin: 0 38px 0 16px;
+}
+.message .myInfo .info .name{
+    font-size: 16px;
+    color: rgb(35,153,241);
+}
+/*主要内容区*/
+main{
+    margin-left: 350px;
+    width: calc(100% - 350px);
+    height: calc(100% - 80px);
+
+    display: flex;
+}
+main .contacts{
+    width: 400px;
+    height: 100%;
+}
+main .contacts .search{
+    padding: 15px 30px;
+    border: 1px solid rgb(230,233,236);
+}
+main .contacts .search input{
+    width: 314px;
+    height: 35px;
+    border: 1px solid rgb(229,232,238);
+    padding: 0 13px;
+    background: url("photo/search.png")  no-repeat 310px;
+    color: rgb(159,169,186);
+}
+main .contacts .linkman{
+    overflow: scroll;
+    height: calc(100% - 70px);
+}
+main .contacts .linkman .choosed{
+    border-left: 3px solid rgb(35,153,241);
+}
+main .contacts .linkman::-webkit-scrollbar{
+    display: none;
+}
+main .contacts .linkman .linkmanInfo{
+    padding: 15px 18px 22px 24px;
+}
+main .contacts .linkman>article{
+    border-right: 1px solid rgb(229,232,238);
+}
+main .contacts .linkman>article+article{
+    border-top: 1px solid rgb(229,232,238);
+}
+main .contacts .linkman .linkmanInfo .phoName{
+    display: flex;
+    align-items: center;
+}
+main .contacts .linkman .linkmanInfo .phoName img.choose{
+    margin-left: -20px;
+}
+main .contacts .linkman .linkmanInfo .phoName .nameApp{
+    width: 130px;
+    font-size: 14px;
+    color: rgb(181,181,181);
+}
+main .contacts .linkman .linkmanInfo .phoName .other{
+    margin-left: 30px;
+}
+main .contacts .linkman .linkmanInfo .phoName .nameApp .nameOn{
+    font-size: 16px;
+    color: rgb(35,153,241);
+}
+main .contacts .linkman .linkmanInfo .phoName .nameApp .nameOn span{
+    font-weight: bold;
+}
+main .contacts .linkman .linkmanInfo .distance{
+    margin-left: 100px;
+    width: 62px;
+    text-align: right;
+    font-size: 14px;
+    line-height: 36px;
+    color: rgb(127,143,164);
+}
+main .contacts .linkman .resume{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+main .contacts .linkman .resume p{
+    font-size: 13px;
+    line-height: 19px;
+    color: rgb(88,93,104);
+    width: 100%;
+    margin-top: 12px;
+}
+main .contacts .linkman .resume p.more{
+    width: 315px;
+    margin-top: 0;
+}
+main .contacts .linkman .resume>div{
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    background: url("photo/bluebg2.png");
+}
+main .bbs{
+    width: calc(100% - 400px);
+    height: 100%;
+}
+main .bbs .specific{
+    border: 1px solid rgb(230,233,236);
+    height: 69px;
+    border-left: 0;
+    border-right: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px 0 8px 30px;
+
+    /*当界面缩小到一定宽度时，避免button按钮混乱*/
+    min-width: 520px;
+    display: flex;
+    justify-content: space-between;
+}
+main .bbs .specific .title{
+    width: 190px;
+    font-size: 18px;
+    display: inline-block;
+}
+main .bbs .specific .title span{
+    color: rgb(27,185,52);
+}
+main .bbs .specific .right{
+    width: 305px;
+}
+main .bbs .specific .right button{
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgb(206,208,218);
+    vertical-align: middle;
+    outline: none;
+    cursor: pointer;
+}
+main .bbs .specific .right button:active {
+    /*按钮被按下时有被点击的效果*/
+    box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+}
+main .bbs .specific .right .func{
+    display: inline-block;
+    padding: 3px 23px 3px 0;
+    border-right: 1px solid rgba(0,0,0,0.3);
+}
+main .bbs .specific .right .func button:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: rgb(242,244,248) url("photo/user.png") no-repeat center;
+}
+main .bbs .specific .right .func button:nth-child(2){
+    border-left: 0;
+    border-right: 0;
+    margin-left: -5px;
+    background: rgb(242,244,248) url("photo/upload.png") no-repeat center;
+}
+main .bbs .specific .right .func button:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -5px;
+    background: rgb(242,244,248) url("photo/trash.png") no-repeat center;
+}
+main .bbs .specific .right .lastNext{
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 21px;
+}
+main .bbs .specific .right .lastNext p{
+    display: inline-block;
+    margin-right: 15px;
+}
+main .bbs .specific .right .lastNext button{
+    vertical-align: middle;
+}
+main .bbs .specific .right .lastNext button:nth-child(2){
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: rgb(242,244,248) url("photo/arrowLeft.png") no-repeat center;
+}
+main .bbs .specific .right .lastNext button:last-child{
+    margin-left: -5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: rgb(242,244,248) url("photo/arrowRight.png") no-repeat center;
+}
+main .bbs .history{
+    height: calc(100% - 70px);
+    overflow: scroll;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-bottom: 180px;
+}
+main .bbs .history::-webkit-scrollbar{
+    display: none;
+}
+main .bbs .history .content{
+    padding: 25px 40px 20px 10px;
+    position: relative;
+}
+main .bbs .history .content>span{
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 44px);
+    background: white;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(127,143,164);
+}
+main .bbs .history .content+.content{
+border-top: 1px solid rgb(230,233,236);
+}
+main .bbs .history .content>div{
+    display: flex;
+    align-items: flex-start;
+}
+main .bbs .history .content>div .img{
+    margin-left: -10px;
+}
+main .bbs .history .content>div h3{
+    font-size: 16px;
+    color: rgb(88,93,104);
+}
+main .bbs .history .content>div h3>span{
+    font-size: 14px;
+    color: rgb(127,143,164);
+    margin-left: 10px;
+}
+main .bbs .history .content>div p{
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(88,93,104);
+    margin-top: 5px;
+}
+main .bbs .history .content .me{
+    margin-top: 26px;
+}
+main .bbs .history .content .me img{
+    margin: 0 20px 0 18px;
+}
+main .bbs .history .new{
+    border-top: 1px solid rgb(35,153,241);
+    height: 160px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+}
+main .bbs .history .new>span{
+    color: rgb(35,153,241);
+}
+main .bbs .history .new .reply{
+    padding: 0 25px 0 15px;
+    width: 100%;
+    margin-top: 30px;
+
+}
+main .bbs .history .new .reply button{
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgb(206,208,218);
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background: rgb(242,244,248);
+
+    font-size: 20px;
+    line-height: 19px;
+    color: rgb(206,208,218);
+    vertical-align: middle;
+    outline: none;
+}
+main .bbs .history .new .reply button:active{
+    -webkit-box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
+
+}
+main .bbs .history .new .reply input[type="text"]{
+    height: 52px;
+    width: 700px;
+    margin-left: -5px;
+    border: 1px solid rgb(206,208,218);
+    border-left: 0;
+    padding-left: 20px;
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
