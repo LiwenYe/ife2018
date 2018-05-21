@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第十六天，开始感受JS的乐趣_编码一</title>
+</head>
+<body>
+    <main>
+        <input id="first-number" type="number" value="0">
+        <input id="second-number" type="number" value="0">
+        <button id="add">+</button>
+        <button id="minus">-</button>
+        <button id="times">*</button>
+        <button id="divide">/</button>
+        <p id="result"></p>
+
+        <script>
+            var num1 = document.getElementById('first-number');
+            var num2 = document.getElementById('second-number');
+            var result = document.getElementById('result')
+            document.getElementById('add').addEventListener('click',function () {
+                result.innerHTML = parseFloat(num1.value) + parseFloat(num2.value);
+            });
+            document.getElementById('minus').addEventListener('click',function () {
+                result.innerHTML = parseFloat(num1.value) - parseFloat(num2.value);
+            });
+            document.getElementById('times').addEventListener('click',function () {
+                result.innerHTML = parseFloat(num1.value) * parseFloat(num2.value);
+            });
+            document.getElementById('divide').addEventListener('click',function () {
+                result.innerHTML = parseFloat(num1.value) / parseFloat(num2.value);
+            });
+        </script>
+    </main>
+</body>
+</html>
