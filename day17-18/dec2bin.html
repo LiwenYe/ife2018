@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>十进制转化为二进制</title>
+</head>
+<body>
+    <!--
+    实现当点击转化按钮时，将输入的十进制数字转化为二进制，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+    ·dec-number为5，bin-bit为5，则转化后数字为00101
+    ·如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+    -->
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        //获取输入框
+        var input = document.querySelector("#dec-number");
+        //获取进制输入框
+        var bin = document.querySelector("#bin-bit");
+        //输入框获取焦点
+        input.focus();
+        //获取转换按钮
+        var trans = document.querySelector("#trans-btn");
+        //获取结果输出位置
+        var p = document.querySelector("#result")
+        //定义一个数组保存二进制数字
+        //定义变量将数组中的二进制拼接成字符串
+        var result = "";
+        function dec2bin(decNumber,binBit) {
+            var arr = new Array();
+            // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+            if (decNumber >=0){
+                do{
+                    arr.push(decNumber % 2);
+                    decNumber = Math.floor(decNumber / 2);
+                }while (decNumber>0)
+            }else{
+                console.log("请输入非负整数！");
+            }
+
+            //当输入的二进制位数大于求出的二进制位数，应该在二进制数前补0，也就是在数组后加0
+            if (arr.length < binBit){
+                var len = binBit -arr.length;
+                for (let i=0;i<len;i++){
+                    arr.push(0);
+                }
+            }
+            //将数组元素转化成字符，然后连接起来
+            for (let i=arr.length-1;i>=0;i--){
+                result += arr[i].toString();
+            }
+            //链接成字符串之后，清空数组
+            arr.splice(0,arr.length);
+        }
+
+        // 实现当点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+        trans.onclick = function () {
+            dec2bin(parseInt(input.value),parseInt(bin.value));
+            p.innerHTML = result;
+            input.value = "";
+            input.focus();
+            result = "";
+        }
+    </script>
+</body>
+</html>

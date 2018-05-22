@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加减乘除</title>
+</head>
+<body>
+    <!--
+    关于加减乘除的任务，加上对于特殊情况的判断，比如判断两个输入框是否都是正常输入了数字类型的内容，比如除法的时候除数是否为0，当判断到输入有异常的时候，把错误信息提示到Console中。
+    -->
+    <main>
+        <input type="text" id="first-number" value="0">
+        <input type="text" id="second-number" value="0">
+        <button>加</button>
+        <button>减</button>
+        <button>乘</button>
+        <button>除</button>
+
+        <p id="result"></p>
+    </main>
+
+    <script>
+        var values = document.querySelectorAll("input");
+        var val1 = values[0];
+        var val2 = values[1];
+        var btns = document.querySelectorAll("button");
+        var result = document.querySelector("#result")
+
+        btns[0].onclick = function () {
+            if(checkIfNumber(val1.value) && checkIfNumber(val2.value)) {
+                result.innerHTML = parseFloat(val1.value) + parseFloat(val2.value);
+            }
+        }
+        btns[1].onclick = function () {
+            if(checkIfNumber(val1.value) && checkIfNumber(val2.value)) {
+                result.innerHTML = parseFloat(val1.value) - parseFloat(val2.value);
+            }
+        }
+        btns[2].onclick = function () {
+            if(checkIfNumber(val1.value) && checkIfNumber(val2.value)) {
+                result.innerHTML = parseFloat(val1.value) * parseFloat(val2.value);
+            }
+        }
+        btns[3].onclick = function () {
+            if(checkIfNumber(val1.value) && checkIfNumber(val2.value)) {
+                if (val2.value === "0"){
+                    console.log("除数不得为0！");
+                    result.innerHTML = "除数不得为0！";
+                } else {
+                    result.innerHTML = parseFloat(val1.value) / parseFloat(val2.value);
+                }
+            }
+        }
+        function checkIfNumber(value) {
+            if (isNaN(value)){
+                console.log("输入项不是数字");
+                result.innerHTML = "输入项必须为数字";
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
