@@ -20,10 +20,14 @@ nav{
 
     float: left;
 }
-nav .func img{
+nav .func a{
     display: block;
 }
-nav .func img+img{
+nav .func a:hover img{
+    width: 70px;
+    height: 70px;
+}
+nav .func a+a{
     margin-top: 20px;
 }
 /*左下方两个按钮相对浏览器左下角固定位置*/
@@ -31,8 +35,11 @@ nav .set{
     position: absolute;
     bottom: 20px;
 }
-nav .set img+img{
+nav .set a+a{
     margin-left: 16px;
+}
+nav .set a:hover{
+    cursor: pointer;
 }
 
 .setting{
@@ -52,6 +59,9 @@ nav .set img+img{
     font-size: 12px;
     line-height: 40px;
     color: rgb(91,103,121);
+}
+.setting ul li a{
+    text-decoration: none;
 }
 .setting ul li p{
     font-size: 12px;
@@ -203,12 +213,17 @@ main .contacts .linkman{
     overflow: scroll;
     height: calc(100% - 70px);
 }
+main .contacts .linkman article:hover{
+    cursor: pointer;
+    border-left: 3px solid rgb(35,153,241);
+}
 main .contacts .linkman .choosed{
     border-left: 3px solid rgb(35,153,241);
 }
 main .contacts .linkman::-webkit-scrollbar{
     display: none;
 }
+
 main .contacts .linkman .linkmanInfo{
     padding: 15px 18px 22px 24px;
 }
@@ -297,6 +312,7 @@ main .bbs .specific .title{
 }
 main .bbs .specific .title span{
     color: rgb(27,185,52);
+    font-weight: bold;
 }
 main .bbs .specific .right{
     width: 305px;
@@ -321,11 +337,10 @@ main .bbs .specific .right .func{
 main .bbs .specific .right .func button:first-child{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right: 0;
     background: rgb(242,244,248) url("photo/user.png") no-repeat center;
 }
 main .bbs .specific .right .func button:nth-child(2){
-    border-left: 0;
-    border-right: 0;
     margin-left: -5px;
     background: rgb(242,244,248) url("photo/upload.png") no-repeat center;
 }
@@ -360,12 +375,7 @@ main .bbs .specific .right .lastNext button:last-child{
 }
 main .bbs .history{
     height: calc(100% - 70px);
-    overflow: scroll;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-bottom: 180px;
+    overflow: auto;
 }
 main .bbs .history::-webkit-scrollbar{
     display: none;
@@ -373,6 +383,9 @@ main .bbs .history::-webkit-scrollbar{
 main .bbs .history .content{
     padding: 25px 40px 20px 10px;
     position: relative;
+}
+main .bbs .history .content:nth-last-child(2){
+    padding-bottom: 205px;
 }
 main .bbs .history .content>span{
     position: absolute;
@@ -415,12 +428,17 @@ main .bbs .history .content .me{
 main .bbs .history .content .me img{
     margin: 0 20px 0 18px;
 }
+
 main .bbs .history .new{
     border-top: 1px solid rgb(35,153,241);
     height: 160px;
-    background: white;
+    resize: vertical;
+    background: rgba(255,255,255,0.8);
     position: absolute;
     bottom: 0;
+
+    width: 800px;
+    padding-bottom: 10px;
 }
 main .bbs .history .new>span{
     color: rgb(35,153,241);
@@ -428,7 +446,7 @@ main .bbs .history .new>span{
 main .bbs .history .new .reply{
     padding: 0 25px 0 15px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 
 }
 main .bbs .history .new .reply button{
@@ -459,14 +477,8 @@ main .bbs .history .new .reply input[type="text"]{
     border-left: 0;
     padding-left: 20px;
     outline: none;
+
+    vertical-align: middle;
 }
-
-
-
-
-
-
-
-
-
-
+/*删除ie自带的选中时删除按钮*/
+input::-ms-clear{display:none;}
