@@ -195,6 +195,7 @@ main{
 }
 main .contacts{
     width: 400px;
+    min-width: 100px;
     height: 100%;
 }
 main .contacts .search{
@@ -202,11 +203,11 @@ main .contacts .search{
     border: 1px solid rgb(230,233,236);
 }
 main .contacts .search input{
-    width: 314px;
+    width: 90%;
     height: 35px;
     border: 1px solid rgb(229,232,238);
     padding: 0 13px;
-    background: url("photo/search.png")  no-repeat 310px;
+    background: url("photo/search.png")  no-repeat 95%;
     color: rgb(159,169,186);
 }
 main .contacts .linkman{
@@ -288,6 +289,8 @@ main .contacts .linkman .resume>div{
 }
 main .bbs{
     width: calc(100% - 400px);
+    /*当界面缩小到一定宽度时，避免button按钮混乱*/
+    min-width: 520px;
     height: 100%;
 }
 main .bbs .specific{
@@ -300,10 +303,10 @@ main .bbs .specific{
     box-sizing: border-box;
     padding: 15px 0 8px 30px;
 
-    /*当界面缩小到一定宽度时，避免button按钮混乱*/
-    min-width: 520px;
+
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 main .bbs .specific .title{
     width: 190px;
@@ -384,10 +387,8 @@ main .bbs .history .content{
     padding: 25px 40px 20px 10px;
     position: relative;
 }
-main .bbs .history .content:nth-last-child(2){
-    padding-bottom: 205px;
-}
-main .bbs .history .content>span{
+
+main .bbs  .content>span{
     position: absolute;
     top: -10px;
     left: calc(50% - 44px);
@@ -400,23 +401,23 @@ main .bbs .history .content>span{
 main .bbs .history .content+.content{
 border-top: 1px solid rgb(230,233,236);
 }
-main .bbs .history .content>div{
+main .bbs  .content>div{
     display: flex;
     align-items: flex-start;
 }
 main .bbs .history .content>div .img{
     margin-left: -10px;
 }
-main .bbs .history .content>div h3{
+main .bbs .content>div h3{
     font-size: 16px;
     color: rgb(88,93,104);
 }
-main .bbs .history .content>div h3>span{
+main .bbs .content>div h3>span{
     font-size: 14px;
     color: rgb(127,143,164);
     margin-left: 10px;
 }
-main .bbs .history .content>div p{
+main .bbs .content>div p{
     font-size: 14px;
     line-height: 19px;
     color: rgb(88,93,104);
@@ -428,29 +429,41 @@ main .bbs .history .content .me{
 main .bbs .history .content .me img{
     margin: 0 20px 0 18px;
 }
-
-main .bbs .history .new{
+main .bbs .history .content:nth-last-child(1){
+    padding-bottom: 190px;
+}
+main .pos{
+    position: relative;
+}
+main .bbs .new{
     border-top: 1px solid rgb(35,153,241);
-    height: 160px;
-    resize: vertical;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 25px 40px 20px 10px;
+    position: relative;
     background: rgba(255,255,255,0.8);
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
+    right: 0;
 
-    width: 800px;
-    padding-bottom: 10px;
+    width: 100%;;
 }
-main .bbs .history .new>span{
+main .bbs .new>span{
     color: rgb(35,153,241);
 }
-main .bbs .history .new .reply{
-    padding: 0 25px 0 15px;
+main .bbs  .new .reply{
     width: 100%;
     margin-top: 20px;
-
+    text-align: center;
 }
-main .bbs .history .new .reply button{
-    width: 54px;
+main .bbs .new .reply form{
+    width: 100%;
+}
+main .bbs .new .reply button{
+    width: 8%;
+    min-width: 30px;
     height: 54px;
     border: 1px solid rgb(206,208,218);
     border-top-left-radius: 7px;
@@ -460,25 +473,27 @@ main .bbs .history .new .reply button{
     font-size: 20px;
     line-height: 19px;
     color: rgb(206,208,218);
-    vertical-align: middle;
+
     outline: none;
+    vertical-align: middle;
 }
-main .bbs .history .new .reply button:active{
+main .bbsy .new .reply button:active{
     -webkit-box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
     -moz-box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
     box-shadow: inset 0 3px 5px 0 rgba(0,0,0,0.2);
 
 }
-main .bbs .history .new .reply input[type="text"]{
+main .bbs .new .reply input[type="text"]{
     height: 52px;
-    width: 700px;
-    margin-left: -5px;
+    width: 85%;
+    min-width: 100px;
     border: 1px solid rgb(206,208,218);
     border-left: 0;
     padding-left: 20px;
     outline: none;
-
     vertical-align: middle;
+    margin-left: -1%;
+
 }
 /*删除ie自带的选中时删除按钮*/
 input::-ms-clear{display:none;}
