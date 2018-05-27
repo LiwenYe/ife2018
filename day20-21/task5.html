@@ -20,10 +20,13 @@
 
 
     <div></div>
+    <button>开始动画</button>
     <script>
+        var div = document.querySelector("div");
+        var btn = document.querySelector("button");
         var positionY = 0;
         var flag=0;//0:开始笑阶段 1：结束笑阶段
-        var div = document.querySelector("div");
+        var state =0,t;//1:按钮点击开始 0：按钮点击了停止
         function bgPos() {
             if (!flag) {
                 positionY -= 480;
@@ -38,7 +41,16 @@
             }
             div.style.backgroundPosition = "0 " + positionY + "px";
         }
-        setInterval(bgPos,100)
+        btn.addEventListener('click',function (event) {
+            if (event.target.textContent === "开始动画") {
+                positionY = 0;
+                t = setInterval(bgPos, 100);
+                event.target.textContent = "结束动画";
+            }else if (event.target.textContent === "结束动画"){
+                clearInterval(t);
+                event.target.textContent = "开始动画";
+            }
+        })
     </script>
 </body>
 </html>
