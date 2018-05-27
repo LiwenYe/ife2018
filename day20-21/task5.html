@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css sprite-笑容</title>
+    <style>
+        div{
+            background: url("erik.jpg") no-repeat;
+            width: 480px;
+            height: 480px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        基于一个我们提供的图片，实现 IFE2016中Erik笑容的动画
+        图片地址：http://ife.baidu.com/2016/static/img/erik_ce204002.jpg
+        注意，依然不要使用 CSS animation，因为我们这里要学习的是使用 JavaScript 来操作 CSS，而不是为了完成这个任务。
+    -->
+
+
+    <div></div>
+    <script>
+        var positionY = 0;
+        var flag=0;//0:开始笑阶段 1：结束笑阶段
+        var div = document.querySelector("div");
+        function bgPos() {
+            if (!flag) {
+                positionY -= 480;
+                if (positionY === -7680){
+                    flag = 1;
+                }
+            }else {
+                positionY += 480;
+                if (positionY ===0){
+                    flag = 0;
+                }
+            }
+            div.style.backgroundPosition = "0 " + positionY + "px";
+        }
+        setInterval(bgPos,100)
+    </script>
+</body>
+</html>

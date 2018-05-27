@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件和样式</title>
+    <!--
+     点击某一个 Li 标签时，将 Li 的背景色显示在 P 标签内，并将 P 标签中的文字颜色设置成 Li 的背景色
+     -->
+    <style>
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        点击某一个 Li 标签时，将 Li 的背景色显示在 P 标签内，并将 P 标签中的文字颜色设置成 Li 的背景色
+    -->
+
+    <ul class="palette">
+        <li style="background-color:crimson"></li>
+        <li style="background-color:bisque"></li>
+        <li style="background-color:blueviolet"></li>
+        <li style="background-color:coral"></li>
+        <li style="background-color:chartreuse"></li>
+        <li style="background-color:darkolivegreen"></li>
+        <li style="background-color:cyan"></li>
+        <li style="background-color:#194738"></li>
+    </ul>
+
+    <p class="color-picker"></p>
+
+    <script>
+
+        //var list = document.querySelectorAll("li");
+        var ul = document.querySelector(".palette");
+        var p = document.querySelector(".color-picker");
+        /*for (let i=0;i<list.length;i++){
+            list[i].onclick = function (e) {
+                var bgName = e.target.style.backgroundColor;
+                p.textContent = bgName;
+                p.style.color = bgName;
+            }
+        }*/
+        //事件委托
+        ul.addEventListener('click',function (event) {
+            var e = event || window.event,
+                target = e.target || e.srcElement;
+            if (target.nodeName.toLowerCase() == 'li'){
+                var bgName = target.style.backgroundColor;
+                p.textContent = bgName;
+                p.style.color = bgName;
+            }
+        },false);
+
+    </script>
+</body>
+</html>

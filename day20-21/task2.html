@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的显示与隐藏</title>
+    <style>
+        select {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        当用户选择了 School 的单选框时，显示 School 的下拉选项，隐藏 Company 的下拉选项
+        当用户选择了 Company 的单选框时，显示 Company 的下拉选项，隐藏 School 的下拉选项
+    -->
+<div>
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+</div>
+    <br>
+
+    <select id="school-select">
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">
+        <option>百度</option>
+        <option>爱奇艺</option>
+    </select>
+    <script>
+            var input = document.getElementsByTagName("input");
+            var select = document.getElementsByTagName("select");
+            for (var i=0;i<input.length;i++){
+                input[i].index = i;
+                input[i].onclick = function () {
+                    if (this.id == "school"){
+                        select[this.index].style.display = "block";
+                        select[1].style.display = "none";
+                    }else if (event.target.id == "company") {
+                        select[this.index].style.display = "block";
+                        select[0].style.display = "none";
+                    }
+                }
+            }
+/*
+            var radios = document.querySelector('div');
+            radios.addEventListener('click',function (event) {
+                var e = event || window.event,
+                    target = e.target || e.srcElement;
+                if (target.id === "school"){
+                    select[0].style.display = "block";
+                    select[1].style.display = "none";
+                }else if (target.id === "company"){
+                    select[1].style.display = "block";
+                    select[0].style.display = "none";
+                }
+            })
+*/
+    </script>
+</body>
+</html>

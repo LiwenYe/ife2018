@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+    <!--
+        当点击按钮 submit-btn 时，在console中输出 name 中的内容
+        在输入过程中，如果按回车键，则同样执行上一条的需求
+        在输入过程中，如果按 ESC 键，则把输入框中的内容清空
+     -->
+
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+
+    <script>
+        var val = document.querySelector("#name");
+        var btn = document.querySelector("#submit-btn");
+        val.focus();
+
+        function inputOutput(){
+            console.log(val.value);
+        }
+        btn.addEventListener('click',inputOutput);
+        //回车键事件
+        val.onkeydown = function () {
+            if (event.keyCode == 13){
+                inputOutput();
+            }else if (event.keyCode == 27){
+                val.value = "";
+                val.focus();
+            }
+        }
+    </script>
+</body>
+</html>

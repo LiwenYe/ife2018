@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器-淡入淡出</title>
+</head>
+<body>
+    <!--
+        点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0
+        在动画过程中，按钮的状态变为不可点击
+        在动画结束后，按钮状态恢复，且文字变成“淡入”
+        在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明
+        淡入动画结束后，按钮文字变为“淡出”
+        暂时不要使用 CSS animation （以后我们再学习）
+    -->
+
+
+    <main>
+        <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+        <button id="fade-btn">淡出</button>
+    </main>
+
+    <script>
+        var btn = document.querySelector("#fade-btn");
+        var obj = document.querySelector("#fade-obj");
+        var show=1,hidden=0;
+        function fadeOut(){
+            if (show >= 0) {
+                show -= 0.01;
+                obj.style.opacity = show;
+                setTimeout(arguments.callee, 10);
+                btn.disabled = true;
+            }else {
+                btn.textContent = "淡入";
+                btn.disabled = false;
+            }
+        }
+        function fadeIn(){
+            if (hidden <= 1) {
+                hidden += 0.01;
+                obj.style.opacity = hidden;
+                setTimeout(arguments.callee, 10);
+                btn.disabled = true;
+            }else{
+                btn.textContent = "淡出";
+                btn.disabled = false;
+            }
+        }
+        btn.addEventListener('click',function (event) {
+            if (event.target.textContent === "淡出"){
+                show = 1;
+                fadeOut();
+            } else if (event.target.textContent === "淡入"){
+                hidden =0;
+                fadeIn();
+            }
+        }) ;
+    </script>
+</body>
+</html>
