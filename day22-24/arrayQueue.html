@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组-队列</title>
+</head>
+<body>
+    <!--
+        基于以上代码，实现如按钮中描述的功能：
+
+        实现如阅读材料中，队列的相关入队、出队、获取队头、判空的操作
+        队头对应数组中最后一个元素
+        入队和出队操作后，需要在 id 为 queue-cont 的 p 标签中更新显示队列中的内容，队头在最右侧，中间用 -> 连接（练习使用数组的join方法）
+    -->
+
+
+    <input id="queue-input" type="text">
+    <p id="queue-cont-right">队列内容：apple-&gt;pear</p>
+    <div id="headOnRight">
+        <p>队头在右侧</p>
+        <button id="in-btn">入队</button>
+        <button id="out-btn">出队</button>
+        <button id="font-btn">打印队头元素内容</button>
+        <button id="empty-btn">判断队列是否为空</button>
+    </div>
+
+    <p id="queue-cont-left">队列内容：apple&lt;-pear</p>
+    <div id="headOnLeft">
+        <p>队头在左侧</p>
+        <button>入队</button>
+        <button>出队</button>
+        <button>打印队头元素内容</button>
+        <button>判断队列是否为空</button>
+    </div>
+
+
+    <script>
+        var queueR = ["apple", "pear"];
+        var queueL = ["apple", "pear"];
+        var inputItem = document.querySelector("#queue-input");
+        inputItem.focus();
+
+        //队头在右
+        var showQueueR = document.querySelector("#queue-cont-right");
+        var btnsR = document.querySelectorAll("#headOnRight button");
+
+        function inQueueR() {
+            var item = inputItem.value;
+            if (item === ""){
+                alert("输入内容为空！");
+            } else {
+                queueR.unshift(item);
+            }
+            inputItem.focus();
+            inputItem.value = " ";
+        }
+        function printR(){
+            showQueueR.textContent = "队列内容：" + queueR.join("->");
+        }
+        function RisEmpty(){
+            if (queueR.length === 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        btnsR[0].addEventListener('click',function () {
+            inQueueR();
+            printR();
+        });
+        btnsR[1].addEventListener('click',function () {
+            queueR.pop();
+            printR();
+        });
+        btnsR[2].addEventListener('click',function () {
+            showQueueR.textContent = "队头元素为：" + queueR[queueR.length - 1];
+        });
+        btnsR[3].addEventListener('click',function () {
+            if (RisEmpty()){
+                alert("队列为空！");
+            } else {
+                alert("队列不为空！");
+            }
+        });
+        
+        //队头在左
+        var showQueueL = document.querySelector("#queue-cont-left");
+        var btnsL = document.querySelectorAll("#headOnLeft button");
+
+        function inQueenL(){
+            var item = inputItem.value;
+            if (item === ""){
+                alert("输入内容为空！");
+            } else {
+                queueL.push(item);
+            }
+            inputItem.focus();
+            inputItem.value = " ";
+        }
+        function printL(){
+            showQueueL.textContent = "队列内容：" + queueL.join("<-");
+        }
+        function LisEmpty(){
+            if (queueL.length === 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        btnsL[0].addEventListener('click',function () {
+            inQueenL();
+            printL();
+        });
+        btnsL[1].addEventListener('click',function () {
+            queueL.shift();
+            printL();
+        });
+        btnsL[2].addEventListener('click',function () {
+            showQueueL.textContent = "队头元素为："+ queueL[0];
+        });
+        btnsL[3].addEventListener('click',function () {
+            if (LisEmpty()){
+                alert("队列为空！");
+            }else {
+                alert("队列不为空！");
+            }
+        });
+    </script>
+</body>
+</html>

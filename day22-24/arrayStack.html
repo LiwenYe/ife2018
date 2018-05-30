@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组-栈</title>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <div id="stackR">
+        <p>栈顶在最右侧</p>
+        <p id="stack-cont-R">栈内容：apple-&gt;pear</p>
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+    </div>
+    <div id="stackL">
+        <p>栈顶在最右侧</p>
+        <p id="stack-cont-L">栈内容：apple&lt;-pear</p>
+        <button>进栈</button>
+        <button>退栈</button>
+        <button>打印栈顶元素内容</button>
+        <button>判断栈是否为空</button>
+    </div>
+
+
+    <script>
+        var inputItem = document.querySelector("#stack-input");
+        inputItem.focus();
+
+        //栈顶在最右侧，中间用 -> 连接
+        var stackR = ["apple", "pear"];
+        var contR = document.querySelector("#stack-cont-R");
+        var btnsR = document.querySelectorAll("#stackR button");
+
+        btnsR[0].addEventListener('click',function () {
+            var item = inputItem.value;
+            if (item === ""){
+                alert("输入内容为空");
+            }else {
+                stackR.unshift(item);
+            }
+            contR.textContent = "栈内容：" + stackR.join("->");
+            inputItem.value = "";
+            inputItem.focus();
+        });
+        btnsR[1].addEventListener('click',function () {
+            stackR.shift();
+            contR.textContent = "栈内容：" + stackR.join("->");
+        });
+        btnsR[2].addEventListener('click',function () {
+            contR.textContent = "栈顶元素：" +stackR[0];
+        });
+        btnsR[3].addEventListener('click',function () {
+            if (stackR.length === 0){
+                alert("栈为空！");
+            } else {
+                alert("栈不为空！");
+            }
+        });
+
+        //栈顶在最左侧，中间用 -> 连接
+        var stackL = ["apple", "pear"];
+        var contL = document.querySelector("#stack-cont-L");
+        var btnsL = document.querySelectorAll("#stackL button");
+
+        btnsL[0].addEventListener('click',function () {
+            var item = inputItem.value;
+            if (item === ""){
+                alert("输入内容为空");
+            }else {
+                stackL.push(item);
+            }
+            contL.textContent = "栈内容：" + stackL.join("<-");
+            inputItem.value = "";
+            inputItem.focus();
+        });
+        btnsL[1].addEventListener('click',function () {
+            stackL.pop();
+            contL.textContent = "栈内容：" + stackL.join("<-");
+        });
+        btnsL[2].addEventListener('click',function () {
+            contL.textContent = "栈顶元素：" +stackL[stackL.length - 1];
+        });
+        btnsL[3].addEventListener('click',function () {
+            if (stackL.length === 0){
+                alert("栈为空！");
+            } else {
+                alert("栈不为空！");
+            }
+        });
+    </script>
+</body>
+</html>
