@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+</head>
+<body>
+    <p id="clock1"></p>
+    <p id="clock2"></p>
+    <!--
+        在页面中显示当前日期及时间，按秒更新
+        格式为 YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+        注意位数的补齐，比如：
+            -- 假设时间为2008年10月10日星期一的12点12分12秒，显示2008年10月10日星期一 12:12:12
+            -- 假设时间为2008年1月1日星期一的3点2分2秒，显示2008年01月01日星期一 03:02:02
+    -->
+    <script>
+        var clock1 = document.querySelector("#clock1");
+        var clock2 = document.querySelector("#clock2");
+
+
+        //得到输入日期是星期几
+        function getWeekC(week){
+            //要求星期显示为“星期X"
+            var weekends = ['七','一','二','三','四','五','六'];
+            return "星期"+weekends[week];
+        }
+        function getWeekE(week) {
+            //要求星期几显示为英文
+            var weeks = ['Sunday','Monday','Tuesday','Wednesday','Thurday','Friday','Saturday'];
+            return weeks[week];
+        }
+        //检查为个位数时前面补0
+        function checkTime(n){
+            if (n < 10){
+                n = '0' + n;
+            }
+            return n;
+        }
+        //判断是AM还是PM
+        var ap;
+        function amOrPm(hour) {
+            if (hour>12){
+                hour -= 12;
+                ap = "PM";
+            } else {
+                ap = "AM";
+            }
+            return hour;
+        }
+        //设置格式
+        function formC(year,month,day,week,hour,minu,sec){
+        return year+"年"+month+"月"+day+"日"+week+" "+hour+":"+minu+":"+sec;
+        }
+        function formE(year,month,day,week,hour,minu,sec,ap){
+            //return year+"年"+month+"月"+day+"日"+week+" "+hour+":"+minu+":"+sec;
+            return year+'-'+month+'-'+day+' '+week+' '+hour+':'+minu+':'+sec+" "+ ap;
+        }
+
+        window.onload = function(){
+            var time = new Date();
+            var year = time.getFullYear();
+            year = checkTime(year);
+            var month = time.getMonth();
+            month = checkTime(month + 1);
+            var day = time.getDate();
+            day = checkTime(day);
+            var week = time.getDay();
+            var hour = time.getHours();
+            var minu = time.getMinutes();
+            minu = checkTime(minu);
+            var sec = time.getSeconds();
+            sec = checkTime(sec);
+            clock1.textContent = formC(year,month,day,getWeekC(week),checkTime(hour),minu,sec);
+            clock2.textContent = formE(year,month,day,getWeekE(week),checkTime(amOrPm(hour)),minu,sec,ap);
+            setTimeout(arguments.callee,1000);
+        }
+
+    </script>
+</body>
+</html>

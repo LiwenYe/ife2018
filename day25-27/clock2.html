@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示所选时间和当前时间的差值</title>
+</head>
+<body>
+    <!--
+        当变更任何一个select选择时，更新 result-wrapper 的内容
+        当所选时间早于现在时间时，文案为 现在距离 "所选时间" 已经过去 xxxx
+        当所选时间晚于现在时间时，文案为 现在距离 "所选时间" 还有 xxxx
+        注意当前时间经过所选时间时候的文案变化
+        注意选择不同月份的时候，日期的可选范围不一样，比如1月可以选31天，11月只有30天，注意闰年
+        同样，需要注意，通过优雅的函数封装，使得代码更加可读且可维护
+   -->
+
+
+
+    <select id="year-select">
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2006">2006</option>
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+    </select>
+
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+    </select>
+
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="7">07</option>
+        <option value="8">08</option>
+        <option value="9">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+    </select>
+
+    <select id="minute-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+    </select>
+
+    <select id="second-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+    </select>
+
+    <p id="result-wrapper"></p>
+
+    <script>
+        var result = document.querySelector("#result-wrapper");
+        var yearS = document.querySelector("#year-select");
+        var monthS = document.querySelector("#month-select");
+        var dayS = document.querySelector("#day-select");
+        var hourS = document.querySelector("#hour-select");
+        var minuS = document.querySelector("#minute-select");
+        var secS = document.querySelector("#second-select");
+        var selectTime,word;
+
+        var year=yearS.value,month=monthS.value,day=dayS.value,hour=checkTime(hourS.value),minu=checkTime(minuS.value),sec=checkTime(secS.value);
+        var gap,gapDays,gapHours,gapMinus,gapSecs;
+        var weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+
+
+        //判断是否为瑞年
+        function isRui(year) {
+            if ((year%100 != 0&&year%4===0) || year % 400 === 0){
+                return 29;
+            }else {
+                return 28;
+            }
+        }
+        //根据输入的天数改变select的option
+        function changeOption(days) {
+            var len = dayS.options.length;
+            if (days<len) {
+                for (let i = len; i > days; i--) {
+                    dayS.removeChild(dayS.lastElementChild);
+                }
+            }else{
+                for (var i = len+1; i <= days; i++) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    dayS.appendChild(option);
+                }
+            }
+        }
+        //根据输入的月改变天数
+        function changDay(m){
+            switch (m) {
+                case 2:
+                    changeOption(isRui(yearS.value));
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    changeOption(30);
+                    break;
+                default:
+                    changeOption(31);
+                    break;
+            }
+        }
+        //将一位数改变成两位
+        function checkTime(n){
+            if (n<10){
+                n = '0'+n;
+            }
+            return n;
+        }
+        //判断选择的日期在现在之前还是之后
+        function ifBeyond(now){
+            if (now < selectTime){
+                word = " 还有 ";
+            }else {
+                word = " 已过去 ";
+            }
+        }
+        //将现在时间和选择时间中的相差秒数转换成天，时，分，秒
+        function timeToDetail(time){
+            time = Math.abs(time);
+            gapDays = Math.floor(time/(24*60*60*1000));
+            gapHours = Math.floor((time - gapDays*24*60*60*1000)/(60*60*1000));
+            gapMinus = Math.floor((time - gapDays*24*60*60*1000 - gapHours*60*60*1000)/(60*1000));
+            gapSecs = Math.floor((time - gapDays*24*60*60*1000 - gapHours*60*60*1000 - gapMinus*60*1000)/1000);
+            return gapDays+"天"+gapHours+"小时"+gapMinus+"分钟"+ gapSecs +"秒";
+        }
+
+        yearS.onchange = function () {
+            year = parseInt(yearS.value);
+            //改变每个月的日数
+            changDay(month);
+
+        };
+        monthS.onchange = function () {
+            month = parseInt(monthS.value);
+            //改变每个月的日数
+            changDay(month);
+        };
+        dayS.onchange = function () {
+            day = parseInt(dayS.value);
+        };
+        hourS.onchange = function () {
+            hour = checkTime(parseInt(hourS.value));
+        };
+        minuS.onchange = function () {
+            minu = checkTime(parseInt(minuS.value));
+        };
+        secS.onchange = function () {
+            sec = checkTime(parseInt(secS.value));
+        };
+        document.body.onchange = function () {
+            var now = new Date();
+            selectTime = new Date(year,month-1,day,hour,minu,sec);
+            gap = now.getTime() - selectTime.getTime();
+            ifBeyond(now);
+            var week = weekdays[selectTime.getDay()];
+            result.textContent = "现在距离 " + year + "年" + month + "月" + day +"日 星期"+ week +" "+ hour +":"+ minu +":"+ sec + word + timeToDetail(gap);
+            setTimeout(arguments.callee,1000);
+        };
+    </script>
+</body>
+</html>
