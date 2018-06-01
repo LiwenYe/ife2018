@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱输入的提示功能</title>
+    <style>
+        .wrapper{
+            font-size: 12px;
+        }
+        .wrapper table{
+            border-collapse: collapse;
+        }
+        .wrapper table tr td{
+            padding: 0;
+        }
+        .wrapper input{
+            width: 195px;
+            height: 30px;
+            padding-left: 5px;
+            border: 1px solid #c6c6c6;
+            outline: none;
+        }
+        .wrapper ul{
+            border: 1px solid #c6c6c6;
+            border-top: 0;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            display: none;
+        }
+        .wrapper ul li{
+            list-style-type: none;
+            padding: 6px;
+            color: #e2e2e2;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <table>
+            <tr>
+                <td><label for="email-input">邮箱：</label></td>
+                <td><input id="email-input" type="text"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul id="email-sug-wrapper" class="email-sug"></ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // 邮箱后缀List参考
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        //获取提示框
+        var list = document.querySelector("#email-sug-wrapper");
+        //获取输入框
+        var input = document.querySelector("#email-input");
+        input.focus();
+        //存储当前选中的提示li的序号
+        var nowSelectTipIndex = 0;
+
+        //获取用户输入
+        function getInput() {
+            var inputValue = input.value.trim();
+            return inputValue;
+        }
+        //生成提示框中的提示内容
+        function promptCont() {
+            var contents = new Array();
+            var frontCont,lastCont,last,count=0;
+            if (getInput().indexOf("@") !== -1){
+                frontCont = getInput().split("@")[0];
+                lastCont = getInput().split("@")[1];
+            } else {
+                frontCont = getInput();
+                last = null;
+            }
+            for (let i = 0; i < postfixList.length; i++) {
+                if (lastCont) {
+                    if (postfixList[i].indexOf(lastCont) === 0) {
+                        last = postfixList[i];
+                        contents.push(frontCont + "@" + last)
+                    } else {
+                        count++;
+                        continue;
+                    }
+                } else {
+                    last = postfixList[i];
+                    contents.push(frontCont + "@" + last)
+                }
+            }
+            if (count === 5){
+                for (let i = 0; i < postfixList.length; i++) {
+                    last = postfixList[i];
+                    contents.push(frontCont + "@" + last);
+                }
+            }
+                return contents;
+        }
+        //将提示内容添加到列表中
+        function createUl(){
+            if (getInput().length === 1) {
+                for (let i = 0; i < postfixList.length; i++) {
+                    var li = document.createElement('li');
+                    list.appendChild(li);
+                }
+            }
+            for (let i=0;i<postfixList.length;i++){
+                list.children[i].textContent =  promptCont()[i];
+            }
+            liBg();
+            //改变提示框高度
+            changeSize();
+        }
+        //改变li背景颜色
+        function liBg() {
+            let lis = list.children;
+            for (let i=0;i<lis.length;i++){
+                lis[i].style.backgroundColor = "rgb(255,255,255)"
+            }
+            lis[nowSelectTipIndex].style.backgroundColor = "rgb(255,192,203)"
+        }
+        //控制提示列表显示或隐藏
+        function ifShow() {
+            if (getInput().length === 0){
+                hiddenUl(list);
+            } else {
+                showUl(list);
+            }
+        }
+        //隐藏提示框
+        function hiddenUl(ele){
+            ele.style.display = 'none';
+        }
+        //显示提示框
+        function showUl(ele){
+            ele.style.display = 'block';
+        }
+        //清空提示框内容
+        function changeSize(){
+            for (let i=0;i<list.children.length;i++){
+                if (list.children[i].textContent.length ==0 ){
+                    hiddenUl(list.children[i])
+                }else {
+                    showUl(list.children[i])
+                }
+            }
+        }
+        //重置提示选中状态
+        function reset(){
+            nowSelectTipIndex = 0;
+        }
+        //改变
+        function change(){
+            var cont = getInput();
+            if (cont.length > 0) {
+                createUl();
+                ifShow();
+                console.log(list.children.length)
+            }else {
+                ifShow()
+            }
+        }
+
+        input.addEventListener('blur',function(){
+            hiddenUl(list)
+        })
+        input.addEventListener('input',change);
+        input.addEventListener('focus',change);
+        list.addEventListener('mouseover',function (event) {
+            var e = event || window.event,
+                target = e.target || e.srcElement;
+            if (target.nodeName.toLowerCase() === 'li'){
+                target.style.backgroundColor = 'rgb(135,206,250)';
+            }
+        });
+        list.addEventListener('mouseout',function (event) {
+            var e = event || window.event,
+                target = e.target || e.srcElement;
+            if (target.nodeName.toLowerCase() === 'li') {
+                target.style.backgroundColor = 'rgb(250,250,250)';
+                if (target === list.firstElementChild){
+                    target.style.backgroundColor = "rgb(255,192,203)";
+                }
+            }
+        });
+        list.addEventListener('click',function (event) {
+            var val;
+            input.focus();
+            var e = event || window.event,
+                target = e.target || e.srcElement;
+            if (target.nodeName.toLowerCase() === 'li'){
+                val = target.textContent;
+                input.value = val;
+                hiddenUl(list);
+            }
+        });
+        input.addEventListener('keyup', function (event) {
+            var e = event || window.event;
+            if (e.keyCode === 27){
+                input.select();
+            }else if (e.keyCode === 38){//上键
+                if (nowSelectTipIndex === 0){
+                    nowSelectTipIndex= list.children.length-1;
+                } else {
+                    nowSelectTipIndex -=1;
+                }
+                liBg();
+            } else if (e.keyCode === 40){//下键
+                if (nowSelectTipIndex === list.children.length-1){
+                    nowSelectTipIndex = 0;
+                } else {
+                    nowSelectTipIndex+=1;
+                }
+                liBg();
+            } else if (e.keyCode === 13){//回车键
+                input.value = list.children[nowSelectTipIndex].textContent;
+                input.focus();
+                hiddenUl(list);
+            } else {
+                input.focus();
+            }
+        });
+    </script>
+</body>
+</html>
