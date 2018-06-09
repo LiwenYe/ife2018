@@ -1,15 +1,18 @@
-var main = document.querySelector("main");
-var region = document.querySelector("#region-select");
-var product = document.querySelector("#product-select");
-createChecks(itemsR,region);
-createChecks(itemsP,product);
-
-main.onchange = function () {
-    if (event.target.id === "全选"){
-        checkAll(event.target);
-    }
-    changeCheck(event.target);
-        createTable();
-        changeTd();
-        mergeTr(1, 0);
-}
+//初始化
+// 点击创建表格
+let regionPart = document.querySelector("#region-select");
+let productPart = document.querySelector("#product-select");
+choose(regionPart,"allRegion");
+choose(productPart,"allProduct");
+regionPart.addEventListener('click',function () {
+    createTable();
+    exchange12();
+    mergeTr(1,0)
+},false);
+productPart.addEventListener('click',function () {
+    createTable();
+    exchange12();
+    mergeTr(1,0);
+},false);
+checkBox(regionPart,itemsR,"allRegion");
+checkBox(productPart,itemsP,"allProduct");
