@@ -16,7 +16,7 @@ function exchange12() {
     let productChecked = productPart.querySelectorAll("input[type='checkbox']:checked");
     let table = document.querySelector("table");
     if (regionChecked.length === 1 && productChecked.length > 1){
-        for (let i=1;i<table.rows.length;i++) {
+        for (let i=0;i<table.rows.length;i++) {
             let item = table.rows[i].cells[0].textContent;
             table.rows[i].cells[0].textContent = table.rows[i].cells[1].textContent;
             table.rows[i].cells[1].textContent = item;
