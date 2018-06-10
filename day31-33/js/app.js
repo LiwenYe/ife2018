@@ -2,6 +2,9 @@
 // 点击创建表格
 let regionPart = document.querySelector("#region-select");
 let productPart = document.querySelector("#product-select");
+checkBox(regionPart,itemsR,"allRegion");
+checkBox(productPart,itemsP,"allProduct");
+createTable();
 choose(regionPart,"allRegion");
 choose(productPart,"allProduct");
 regionPart.addEventListener('click',function () {
@@ -14,5 +17,3 @@ productPart.addEventListener('click',function () {
     exchange12();
     mergeTr(1,0);
 },false);
-checkBox(regionPart,itemsR,"allRegion");
-checkBox(productPart,itemsP,"allProduct");

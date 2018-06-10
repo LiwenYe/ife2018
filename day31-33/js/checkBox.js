@@ -34,6 +34,10 @@ function checkBox(part,arr,allId) {//part:多选项放置区域
     label.textContent = "全选";
     part.appendChild(label);
 
+    //各个部分选中一个做开始的预览
+    let reg = part.querySelectorAll("input");
+    var r1 = Math.floor(Math.random()*3);
+    reg[r1].checked = true;
 }
 //全选
 function choose(part,allId) {
