@@ -1,0 +1,36 @@
+main{
+    display: flex;
+    justify-content: space-around;
+}
+#select{
+    display: flex;
+    justify-content: space-around;
+}
+
+#svg-wrapper{
+    width: 800px;
+    padding: 20px 0 0
+}
+table{
+    margin-top: 50px;
+    border-collapse: collapse;
+}
+table tr th,
+table tr td{
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 14px;
+}
+table tr td:hover{
+    background: deepskyblue;
+}
+table tr:hover {
+    background: lightblue;
+}
+table tr:nth-of-type(1){
+    background: #fff;
+}
+table tr td:nth-of-type(1){
+    background: #fff;
+}

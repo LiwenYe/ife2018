@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CANVAS小练习编码</title>
+    <style>
+        canvas{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawing" width="800px"></canvas>
+    <canvas id="clock" height="400px"></canvas>
+
+    <script>
+        function title(ctx,text,x,y) {
+            ctx.font = "18px 华文楷体"
+            ctx.textAlign="center";
+            ctx.textBaseline="start";
+            ctx.fillText(text,x,y);
+        }
+        function line(ctx,x1,y1,x2,y2) {
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+            ctx.stroke();
+        }
+        function rect1(ctx,x,y,w,h) {
+            ctx.moveTo(x,y);
+            ctx.strokeRect(x,y,w,h);
+        }
+        function rect2(ctx,x,y,w,h) {
+            ctx.moveTo(x,y);
+            ctx.rect(x,y,w,h);
+            ctx.stroke();
+        }
+        function circle(ctx,x,y,r) {
+            ctx.moveTo(x+r,y);
+            ctx.arc(x,y,r,0,Math.PI*2,false);
+            ctx.stroke();
+        }
+        function cloud(ctx) {
+            ctx.moveTo(510,100);
+            ctx.arc(510,80,20,Math.PI/2,Math.PI*3/2,false);
+            ctx.arc(540,50,30,Math.PI,-Math.PI/4,false);
+            ctx.arc(605,50,50,Math.PI*8/7,0,false);
+            ctx.arc(645,75,30,-Math.PI*2/5,Math.PI/2,false);
+            ctx.arc(615,110,30,0,Math.PI,false);
+            ctx.arc(545,105,38,0,Math.PI*20/19,false)
+            ctx.stroke();
+        }
+        function draw() {
+            let canvas = document.getElementById("drawing");
+            if (canvas.getContext){
+                let ctx = canvas.getContext('2d');
+                ctx.beginPath();
+
+                title(ctx,"直线",60,30);
+                line(ctx,20,40,100,100);
+
+                title(ctx,"矩形",180,30);
+                rect1(ctx,130,40,40,60);
+
+                ctx.save();
+                ctx.strokeStyle="red";
+                rect2(ctx,180,40,40,60);
+                ctx.restore();
+
+                title(ctx,"圆形",290,30);
+                circle(ctx,290,70,30);
+
+                title(ctx,"一些文字",400,70);
+
+                cloud(ctx)
+
+
+            }
+        }
+        draw();
+
+        function clock() {
+            let ctx = document.getElementById("clock").getContext('2d');
+
+            ctx.save();
+            ctx.clearRect(0,0,150,150);
+            ctx.translate(80,80);
+            ctx.rotate(-Math.PI/2);
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+
+            ctx.save();
+
+            //时针线
+            for (let i=0;i<12;i++){
+                ctx.rotate(Math.PI/6);
+                ctx.moveTo(0,60);
+                ctx.lineTo(0,70);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            ctx.save();
+            //分钟线
+            for (let i=0;i<60;i++){
+                ctx.lineWidth = 1;
+                ctx.rotate(Math.PI/30);
+                {
+                    if ((i+1)%5 !== 0){
+                        ctx.moveTo(0,65);
+                        ctx.lineTo(0,70);
+                        ctx.stroke();
+                    }
+                }
+            }
+            ctx.restore();
+
+            let time = new Date();
+            let hour = time.getHours();
+            let minus = time.getMinutes();
+            let secs = time.getSeconds();
+            hour = hour > 12 ? hour - 12 : hour;
+
+            //时针
+            ctx.save();
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.rotate(hour*(Math.PI/6)+minus*(Math.PI/360)+secs*(Math.PI/21600));
+            ctx.moveTo(-20,0);
+            ctx.lineTo(45,0);
+            ctx.stroke();
+            ctx.restore();
+
+            //分针
+            ctx.save();
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.rotate(minus*(Math.PI/30)+ secs*(Math.PI/1800));
+            ctx.moveTo(-20,0);
+            ctx.lineTo(53,0);
+            ctx.stroke();
+            ctx.restore();
+
+            //秒针
+            ctx.save();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.rotate(secs*Math.PI/30);
+            ctx.moveTo(-20,0);
+            ctx.lineTo(49,0);
+            ctx.moveTo(57,0)
+            ctx.arc(53,0,4,0,Math.PI*2,false);
+            ctx.moveTo(2,0)
+            ctx.arc(0,0,2,0,Math.PI*2,false);
+            ctx.stroke();
+            ctx.restore();
+
+            ctx.beginPath();
+            ctx.arc(0,0,75,0,Math.PI*2,false);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        setInterval(clock,1000);
+
+    </script>
+</body>
+</html>
