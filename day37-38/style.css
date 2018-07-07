@@ -1,0 +1,85 @@
+#selects{
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 0 100px;
+}
+#selects>div{
+    padding-left: 35px;
+}
+#selects>label{
+    font-size: 17px;
+}
+#selects input{
+    margin-left: 10px;
+}
+#map{
+    display: flex;
+    justify-content: center;
+}
+#table-wrapper{
+    text-align: center;
+}
+table{
+    margin: 20px auto 0;
+    border-collapse: collapse;
+}
+table tr th{
+    border: 1px solid black;
+    padding: 13px 15px;
+    font-size: 16px;
+}
+
+table tr:first-child{
+    background: MediumSlateBlue;
+}
+table tr td{
+    border: 1px solid black;
+    padding: 15px;
+    text-align: center;
+    width: 55px;
+    font-size: 15px;
+
+    overflow: hidden;
+    position: relative;
+}
+table tr td:first-child,
+table tr td:nth-child(2){
+    width: 90px;
+}
+
+table tr td input[type="text"]{
+    width: 43px;
+    height: 34px;
+    text-align: center;
+    font-size: 15px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: none;
+}
+table tr td img{
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    right: -20px;
+    top: 15px;
+}
+table tr td:hover img{
+    right: 5px;
+}
+table tr td input[type="button"]{
+    width: 30px;
+    height: 20px;
+    padding: 0!important;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.confirm{
+    top:3px;
+}
+.cancel{
+    bottom: 3px;
+}

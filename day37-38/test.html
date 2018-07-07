@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="selects">
+            <label>地区：</label>
+            <div id="region">
+                <input type="checkbox" id="华东" value="华东"><label>华东</label>
+                <input type="checkbox" id="华南" value="华南"><label>华南</label>
+                <input type="checkbox" id="华北" value="华北"><label>华北</label>
+                <input type="checkbox" id="all1" value="全选"><label>全选</label>
+            </div>
+            <label>产品：</label>
+            <div id="product">
+                <input type="checkbox" id="手机" value="手机"><label>手机</label>
+                <input type="checkbox" id="笔记本" value="笔记本"><label>笔记本</label>
+                <input type="checkbox" id="智能音箱" value="智能音箱"><label>智能音箱</label>
+                <input type="checkbox" id="all2" value="全选"><label>全选</label>
+            </div>
+        </div>
+
+        <div id="map">
+            <div id="svg-wrapper"></div>
+            <div id="canvas-wrapper">
+                <canvas id="drawing"></canvas>
+            </div>
+        </div>
+
+        <div id="table-wrapper"></div>
+    </main>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/checkAll.js"></script>
+    <script src="js/localStorage.js"></script>
+    <script src="js/getData.js"></script>
+    <script src="js/createTable.js"></script>
+    <script src="js/exchangeTd.js"></script>
+    <script src="js/bars.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
