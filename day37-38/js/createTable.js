@@ -91,8 +91,28 @@ function createTable(data) {
                             }
                             storage(changeData);
                         }
+                        createTable(getData(sourceData));
+                        exchangeTd();
                     };
-
+                    inputCancel.onclick = function(){
+                        let e = event || window.event,
+                            target = e.target;
+                        target.parentNode.childNodes[0].value = target.parentNode.textContent;
+                    }
+                    inputData.onkeyup = function(event){
+                        let e = event || window.event,
+                            target = e.target;
+                        if (e.keyCode === 13){
+                            inputConfirm.onclick();
+                        }else if (e.keyCode === 27){
+                            inputCancel.onclick();
+                            target.parentNode.children[0].setAttribute("style", "display:none");
+                            target.parentNode.children[1].setAttribute("style", "display:none");
+                            target.parentNode.children[2].setAttribute("style", "display:none");
+                            target.parentNode.children[3].setAttribute("style", "display:block");
+                            target.parentNode.style.textAlign = "center";
+                        }
+                    };
                     inputData.onblur = function (event) {
                         let e = event || window.event,
                             target = e.target;
