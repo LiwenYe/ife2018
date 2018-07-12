@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务1：hash初体验</title>
+</head>
+<body>
+    <div id="btns">
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+    </div>
+    <div id="content"></div>
+
+    <script>
+        let btns = document.getElementById("btns");
+        let cont = document.getElementById("content");
+
+        function getURL(){
+            return window.location;
+        }
+
+        function changeContent(url){
+            let data = url.hash.substring(1);
+            cont.textContent = data;
+        }
+
+        btns.addEventListener('click',function (event) {
+            let e = event || window.event,
+                target = e.target || e.srcElement;
+            let url = getURL();
+            if (target.tagName.toLowerCase() === "button") {
+                url.hash = target.textContent;
+            }
+        },false);
+
+        if ("onhashchange" in window) {
+            window.addEventListener('hashchange',function (event) {
+                let url = getURL();
+                changeContent(url);
+            });
+        }
+
+        window.onload = changeContent(window.location);
+    </script>
+
+</body>
+</html>

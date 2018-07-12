@@ -1,0 +1,56 @@
+#selects>div{
+    margin: 10px;
+}
+#selects input{
+    margin-left: 10px;
+}
+#map{
+    display: flex;
+}
+#tableWrapper table{
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+#tableWrapper table tr th,
+#tableWrapper table tr td{
+    border: 1px solid black;
+    font-size: 14px;
+    width: 70px;
+    text-align: center;
+    padding: 13px 10px;
+
+    position: relative;
+    overflow: hidden;
+}
+#tableWrapper table input[type="text"]{
+    width: 40px;
+    height: 28px;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    display: none;
+}
+#tableWrapper table input[type="button"]{
+    width: 30px;
+    font-size: 12px;
+    padding: 0;
+
+    position: absolute;
+    right: 2px;
+}
+.confirm{
+    top: 2px;
+    display: none;
+}
+.cancel{
+    bottom: 2px;
+    display: none;
+}
+#tableWrapper table img{
+    position: absolute;
+    top: 10px;
+    right: -20px;
+}
+#tableWrapper table tr td:hover img{
+    right: 5px;
+}

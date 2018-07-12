@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务2：hash复杂一点</title>
+</head>
+<body>
+    <div id="btns">
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+    </div>
+
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+
+    <script>
+        let btns = document.querySelector("#btns");
+        let showA = document.getElementById("contABC"),
+            showB = document.getElementById("contDEF");
+
+        function getURL(){
+            return window.location;
+        }
+
+        function changeContent(url){
+            let data = url.hash.substring(1);
+            console.log(data)
+            if (data.indexOf('A') !== -1){
+                showA.textContent = 'A';
+            } else if (data.indexOf('B') !== -1){
+                showA.textContent = 'B';
+            }else if (data.indexOf('C') !== -1){
+                showA.textContent = 'C';
+            }
+            if (data.indexOf('D') !== -1){
+                showB.textContent = 'D';
+            }else if (data.indexOf('E') !== -1){
+                showB.textContent = 'E';
+            }else if (data.indexOf('F') !== -1){
+                showB.textContent = 'F';
+            }
+        }
+
+        btns.addEventListener('click',function (event) {
+            let e = event || window.event,
+                target = e.target || e.srcElement;
+            let url = getURL(), 
+                hash = url.hash.substring(1);
+            if (target.tagName.toLowerCase() === "button") {
+                let data = target.textContent;
+                if (url.hash.substring(1).length < 2){
+                    if ("ABC".indexOf(data)!==-1 && "ABC".indexOf(hash)===-1){
+                        hash = data + hash;
+                    }else if ("DEF".indexOf(data)!==-1 && "DEF".indexOf(hash)===-1) {
+                        hash = hash + data;
+                    }else {
+                        hash = data;
+                    }
+                }else {
+                    if ("ABC".indexOf(data) !== -1){
+                        hash = hash.replace(/\w/,data);
+                    }else if ("DEF".indexOf(data) !== -1){
+                        hash = hash.replace(/\w$/,data)
+                    }
+                }
+                url.hash = hash;
+            }
+        },false);
+
+        if ("onhashchange" in window){
+            window.addEventListener('hashchange',function () {
+                let url = getURL();
+                changeContent(url);
+            },false);
+        }
+        window.onload = changeContent(getURL());
+    </script>
+</body>
+</html>
