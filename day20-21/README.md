@@ -7,17 +7,15 @@
 当用户选择了 School 的单选框时，显示 School 的下拉选项，隐藏 Company 的下拉选项<br>
 当用户选择了 School 的单选框时，显示 Company 的下拉选项，隐藏 School 的下拉选项<br>
 
-### task3--task2延伸
+### task3--task2延伸及使用事件代理
 点击某一个 Li 标签时，将 Li 的背景色显示在 P 标签内，并将 P 标签中的文字颜色设置成 Li 的背景色<br>
 
-### task4--task3使用事件代理
-
-### task5--setTimeout和setInterval
+### task4--setTimeout和setInterval
 点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0<br>
 在动画过程中，按钮的状态变为不可点击<br>
 在动画结束后，按钮状态恢复，且文字变成“淡入”<br>
 在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明<br>
 淡入动画结束后，按钮文字变为“淡出”<br>
 
-### task6--CSS Sprite
+### task5--CSS Sprite
 使用CSS Sprite技术实现一个帧动画<br>
