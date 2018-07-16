@@ -2,4 +2,4 @@
 ![image](https://github.com/LiwenYe/ife2018/blob/master/day44-46/image/demand.png)
 
 ## 任务:
-![image](https://github.com/LiwenYe/ife2018/blob/master/day44-46/image/task.png)
+![image](https://github.com/LiwenYe/ife2018/blob/master/day44-46/image/task.jpg)
