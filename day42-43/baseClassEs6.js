@@ -76,5 +76,5 @@ ifeRestaurant.hire(newCook);
 
 console.log(ifeRestaurant.staff);
 
-ifeRestaurant.fire(newCook);
-console.log(ifeRestaurant.staff);
+//ifeRestaurant.fire(newCook);
+//console.log(ifeRestaurant.staff);
