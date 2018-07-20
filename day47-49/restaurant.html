@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开一家餐厅吧（二）</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div id="rest">
+            <div id="doorIn">
+                <h1>霸王餐厅<span>总金额：</span><span id="money"></span></h1>
+                <div id="kitchen">
+                    <div>
+                        <p style="text-align: center"><span id="cookerState">空闲</span><span id="cookTime"></span></p>
+                        <img src="image/cooker.jpg">
+                    </div>
+                    <div id="cookList">
+                        <p>要做的菜</p>
+                        <ul id="dishList"></ul>
+                    </div>
+                    <span></span>
+                </div>
+                <div id="waiter" class="waiter_cooker">
+                    <div>
+                        <p id="waiter_words" style="text-align: center;font-size: 12px"></p>
+                    </div>
+                    <img src="image/waiter.jpg" >
+                </div>
+
+                <div id="hall">
+                    <article>
+                        <p><span id="customer_words"></span><span id="cusTime"></span></p>
+                    </article>
+                    <div id="orderDiv">
+                        <p style="text-align: center">点菜单</p>
+                        <ul  id="orderList"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="queen"></div>
+        </div>
+    </main>
+
+    <script src="JavaScript/ES5/Restaurant.js"></script>
+    <script src="JavaScript/ES5/Staff.js"></script>
+    <script src="JavaScript/ES5/Customer.js"></script>
+    <script src="JavaScript/process.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+h1{
+    text-align: center;
+}
+#rest{
+    width: 1400px;
+    height: 740px;
+    border: 1px solid rgba(0,0,0,0.6);
+
+    position: relative;
+}
+#rest img{
+    width: 150px;
+    height: 200px;
+}
+#rest h1 span{
+    margin-left: 20px;
+    font-size: 16px;
+}
+#doorIn{
+    float: left;
+}
+
+#rest #kitchen{
+    width: 400px;
+    height: 300px;
+    border: 1px solid rgba(0,0,0,0.5);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+}
+#kitchen>span{
+    width: 120px;
+    height: 2px;
+    background: white;
+
+    position: absolute;
+    bottom: -1px;
+    left: 140px;
+}
+#kitchen #cookList{
+    width: 180px;
+    height: 200px;
+    border: 1px solid rgba(0,0,0,0.5);
+    margin-top: 30px;
+}
+#kitchen #cookList p{
+    text-align: center;
+    font-size: 15px;
+}
+#rest .waiter_cooker{
+    position: absolute;
+    right:850px;
+    bottom: 450px;
+}
+#rest .waiter_customer{
+    position: absolute;
+    right: 460px;
+    bottom: 0px;
+}
+
+#hall{
+    margin-top: 100px;
+    width: 350px;
+    position: absolute;
+    right: 150px;
+    bottom: 20px;
+
+    display: flex;
+}
+
+#hall>div{
+    width: 160px;
+    height: 200px;
+    border: 1px solid rgba(0,0,0,0.4);
+
+}
+#hall article>div{
+    width: 80px;
+    height: 60px;
+    background-image: url('image/bg.png');
+    background-size: 100% 100%;
+    padding: 10px 20px;
+}
+#hall article{
+    width: 150px;
+}
+#hall article p{
+   text-align: center;
+    font-size: 12px;
+}
+#hall article img{
+    width: 100px;
+    height: 130px;
+}
+
+#queen{
+    width: 150px;
+    height: 740px;
+    border-left: 1px solid rgba(0,0,0,0.6);
+
+    float: right;
+}
+#queen div{
+    width: 120px;
+    height: 180px;
+    font-size: 12px;
+    text-align: center;
+}
+#queen div p{
+    margin: 0;
+}
+#queen img{
+    width: 120px;
+    height: 150px;
+}
+
+.customerPosition{
+    position: absolute;
+    right: 360px;
+    bottom: 0px;
+}
